@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+    </style>
+</head>
+<body>
+    <table style="width:100%">
+        <tr>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>PhoneNumber</th>
+            <th>Gender</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        <% data.forEach(function(user) { %>
+        <tr>
+            <td><%= user.fullname %></td>
+            <td><%= user.email %></td>
+            <td><%= user.address %></td>
+            <td><%= user.phonenumber %></td>
+            <td><% if(user.gender == 0 ) { %>
+            Nam<% } %>
+            <% if(user.gender == 1 ) { %>
+            Nữ<% } %></td>
+            </td>
+            <td><% if(user.roleId == 1 ) { %>
+            Admin <% } %>
+            <% if(user.roleId == 2 ) { %>
+            Doctor <% } %>
+            <% if(user.roleId== 3 ) { %>
+            Patient <% } %>
+            </td>
+            <td>
+                <a href="/edit-crud/<%= user.id %>" >Edit</a>
+                <a 
+                href="/delete-crud/<%= user.id %>" type="button">Delete</a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
